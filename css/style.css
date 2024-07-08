@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#dbz{
+opacity:0.3;
+}
+
+body {
+  background-image: linear-gradient(#a12906, #f35c01);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.banner {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  perspective: 1000px; /* Definindo a perspectiva para o efeito 3D */
+}
+
+.banner .slider {
+  position: absolute;
+  top: 50%; /* Ajuste conforme necessário */
+  left: 50%; /* Ajuste conforme necessário */
+  transform-style: preserve-3d;
+  animation: autoRun 25s linear infinite;
+}
+
+.banner .slider .item {
+  position: absolute;
+  width: 225px;
+  height: 250px;
+  left: 0;
+  top: 0;
+  transform-style: preserve-3d;
+}
+
+.banner .slider .item img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+}
+
+.banner .dragon {
+  position: absolute;
+  bottom: -100px; /* Ajuste conforme necessário para a posição do dragão */
+  left: 40%;
+  transform: translateX(-17%) rotateX(-26deg); /* Ajuste o ângulo de rotação conforme necessário */
+  z-index: -1;
+}
+
+.banner .dragon img {
+  width: 800px; /* Ajuste conforme necessário */
+  height: auto; /* Manter a proporção */
+}
+
+@keyframes autoRun {
+  from {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  to {
+    transform: perspective(1000px) rotateY(360deg);
+  }
+}
+
+.banner .slider .item {
+  --rotation: calc(var(--position) * 36deg);
+  transform: rotateY(var(--rotation)) translateZ(210px);
+}
